@@ -4,10 +4,11 @@ import { NavcardComponent } from '../navcard/navcard.component';
 import { ProfilecardComponent } from '../profilecard/profilecard.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NavcardComponent,ProfilecardComponent,CommonModule,FormsModule],
+  imports: [NavcardComponent,ProfilecardComponent,CommonModule,FormsModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
