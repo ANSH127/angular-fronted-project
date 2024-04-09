@@ -1,11 +1,23 @@
-<div class="container text-center">
+<div class=" text-center container">
     <div class="row">
         <div class="col-md-3 d-none d-md-block">
             <app-profilecard></app-profilecard>
             <app-navcard></app-navcard>
         </div>
-        <div class="col-md-6 col-12">
-            My Confession Component
+        <div class="col-md-6 col-12" style="overflow-y: scroll; overflow-x: hidden; height: 80vh;scroll-behavior: smooth;
+
+        scrollbar-width: none; 
+        ">
+            <div class="shadow p-2 mt-5 mb-4">
+                <h3 class="text-center">Your Confessions
+                </h3>
+                <div *ngFor="let i of [1,2,3]">
+                    <app-confessioncard></app-confessioncard>
+                </div>
+
+
+
+            </div>
         </div>
         <div class="col-md-3 d-none d-md-block">
             Column
