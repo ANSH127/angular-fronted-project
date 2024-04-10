@@ -5,10 +5,12 @@ import { ProfilecardComponent } from '../profilecard/profilecard.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { SearchcardComponent } from '../searchcard/searchcard.component';
+
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [NavcardComponent,ProfilecardComponent,CommonModule,FormsModule,RouterLink],
+  imports: [NavcardComponent,ProfilecardComponent,CommonModule,FormsModule,RouterLink,SearchcardComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
