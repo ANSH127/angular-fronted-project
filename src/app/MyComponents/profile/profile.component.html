@@ -1,0 +1,54 @@
+<div class=" container">
+    <div class="row">
+        <div class="col-md-3 d-none d-md-block">
+            <app-profilecard></app-profilecard>
+            <app-navcard></app-navcard>
+        </div>
+        <div class="col-md-6 col-12" style="overflow-y: scroll; overflow-x: hidden; height: 80vh;scroll-behavior: smooth;
+
+        scrollbar-width: none; 
+        ">
+            <div class="shadow p-2 mt-5 mb-4" style="height: 80vh;">
+
+                <!-- Profile section -->
+                <div class="mt-4">
+
+                    <div class="text-center gap-y-3">
+
+                        <img style="border-radius: 100%;" src="assets/images/Avatar.jpg" alt="" width="120"
+                            height="120">
+
+                    </div>
+                    <div class="text-center">
+                        <h6 style="font-weight: bold; font-size: 2rem;">Ansh Agarwal</h6>
+
+                    </div>
+
+
+                    <div class="mt-5 gap-y-3 form-group d-flex gap-2">
+                        <label for="name" class="p-2" style="font-weight: bold;">Email</label>
+                        <input type="text" name="email" class="form-control w-80" id="name" aria-describedby="emailHelp"
+                            placeholder="anshagrawal12348@gmail.com" disabled required>
+
+
+                    </div>
+
+                    <div class="text-center gap-y-3 mt-4">
+                        
+                        <button class="btn btn-primary">
+                            Logout
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class=" col-md-3 d-none d-md-block">
+                        <app-searchcard></app-searchcard>
+                        <app-trendingcard></app-trendingcard>
+                    </div>
+                </div>
+            </div>

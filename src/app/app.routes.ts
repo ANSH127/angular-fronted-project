@@ -4,11 +4,14 @@ import { AddconfessionComponent } from './MyComponents/addconfession/addconfessi
 import { MyconfessionComponent } from './MyComponents/myconfession/myconfession.component';
 import { LoginComponent } from './MyComponents/login/login.component';
 import { SignupComponent } from './MyComponents/signup/signup.component';
+import { ProfileComponent } from './MyComponents/profile/profile.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'addconfession', component: AddconfessionComponent },
     { path: 'myconfession', component: MyconfessionComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'signup', component: SignupComponent }
+    { path: 'signup', component: SignupComponent },
+    { path: 'profile', component: ProfileComponent }
+
 ];
