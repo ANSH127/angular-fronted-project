@@ -6,10 +6,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SearchcardComponent } from '../searchcard/searchcard.component';
+import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NavcardComponent,ProfilecardComponent,CommonModule,FormsModule,RouterLink,SearchcardComponent],
+  imports: [NavcardComponent,ProfilecardComponent,CommonModule,FormsModule,RouterLink,SearchcardComponent,TrendingcardComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
