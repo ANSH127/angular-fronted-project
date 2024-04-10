@@ -4,8 +4,10 @@
 
             <!-- // search bar -->
             <div class="input-group mb-3 d-flex gap-2">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Search">
-                <span class="mt-1">
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                 [(ngModel)]="searchinput" >
+                
+                <span class="mt-1" (click)="search()">
 
                     <magnifying-glass-outline-icon></magnifying-glass-outline-icon>
                 </span>

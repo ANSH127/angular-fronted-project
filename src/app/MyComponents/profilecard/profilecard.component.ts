@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './profilecard.component.css'
 })
 export class ProfilecardComponent {
-  isLoggedin:boolean = false;
+  isLoggedin:boolean = true;
   constructor() {}
 
 }
