@@ -38,8 +38,29 @@
 
         </div>
         <div class="d-flex flex-row gap-2">
-            <chat-bubble-bottom-center-outline-icon></chat-bubble-bottom-center-outline-icon>
+            <span (click)="toggleComment()">
+
+                <chat-bubble-bottom-center-outline-icon></chat-bubble-bottom-center-outline-icon>
+            </span>
             <p class="pt-1">Comment</p>
         </div>
     </div>
+
+    <!-- // comment box -->
+    <div *ngIf="showComment" >
+        <div class="d-flex flex-row gap-2">
+            <div class="w-100">
+                <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="2" 
+                    placeholder="Write a comment..." 
+                    [(ngModel)]="comment"
+                     >
+                </textarea>
+            </div>
+            <div class="pt-2" (click)="postComment()">
+
+                <paper-airplane-solid-icon></paper-airplane-solid-icon>
+            </div>
+        </div>
+    </div>
+
 </div>
