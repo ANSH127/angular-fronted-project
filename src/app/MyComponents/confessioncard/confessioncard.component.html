@@ -47,18 +47,35 @@
     </div>
 
     <!-- // comment box -->
-    <div *ngIf="showComment" >
+    <div *ngIf="showComment">
         <div class="d-flex flex-row gap-2">
             <div class="w-100">
-                <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="2" 
-                    placeholder="Write a comment..." 
-                    [(ngModel)]="comment"
-                     >
+                <textarea class="form-control w-100" id="exampleFormControlTextarea1" rows="2"
+                    placeholder="Write a comment..." [(ngModel)]="comment">
                 </textarea>
             </div>
             <div class="pt-2" (click)="postComment()">
 
                 <paper-airplane-solid-icon></paper-airplane-solid-icon>
+            </div>
+        </div>
+    </div>
+
+    <!-- // comment section -->
+    <div *ngIf="showComment" class="container mt-4"  style="border-radius: 10px; background-color:rgb(243, 244, 246) ;">
+        <div class="container  pt-2">
+            <div class="d-flex flex-row gap-2">
+                <img src="/assets/images/Avatar.jpg" width="30" height="30" class="rounded-circle" alt="...">
+                <div>
+                    <p class="pt-1" style="font-weight: bold; height: 3px; font-size: small;">Ansh Agarwal</p>
+                    <p class="pt-1" style="display: flex; font-weight: 300; height: 10px; font-size: x-small;">2 hours ago</p>
+                </div>
+            </div>
+            <div class="pb-1">
+                <p style="text-align: justify; font-size: small;">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum dignissimos earum voluptates dolorum
+                    animi provident inventore est ab explicabo totam!
+                </p>
             </div>
         </div>
     </div>
