@@ -1,4 +1,4 @@
-<div class=" w-100  shadow-sm p-1 mt-4 mb-4">
+<div  *ngIf="confession"  class=" w-100  shadow-sm p-1 mt-4 mb-4">
     <div class="d-flex flex-row gap-2">
 
         <img src="/assets/images/Avatar.jpg" width="40" height="40" class="rounded-circle" alt="...">
@@ -13,6 +13,10 @@
 
 
             </p>
+        </div>
+
+        <div *ngIf="isDelete" class="mt-1" (click)="deleteconfession(confession._id)">
+            <trash-outline-icon color="red"></trash-outline-icon>
         </div>
     </div>
     <div class="pt-1">
@@ -68,9 +72,10 @@
     </div>
 
     <!-- // comment section -->
-    <div *ngIf="showComment" class="container mt-4" >
+    <div *ngIf="showComment" class="container mt-4">
 
-        <div *ngFor="let comment of confession.comments" style="border-radius: 10px; background-color:rgb(243, 244, 246) ;">
+        <div *ngFor="let comment of confession.comments"
+            style="border-radius: 10px; background-color:rgb(243, 244, 246) ;">
             <div class="container  pt-2 mb-2">
                 <div class="d-flex flex-row gap-2">
                     <img src="/assets/images/Avatar.jpg" width="30" height="30" class="rounded-circle" alt="...">
@@ -78,7 +83,8 @@
                         <p class="pt-1" style="font-weight: bold; height: 3px; font-size: small;">
                             Anonymus
                         </p>
-                        <p class="pt-1" style="display: flex; font-weight: 300; height: 10px; font-size: x-small;">{{
+                        <p class="pt-1" style="display: flex; font-weight: 300; height: 10px; font-size: x-small;">
+                            {{
                             comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
                     </div>
                 </div>
@@ -93,3 +99,4 @@
         </div>
 
     </div>
+</div>

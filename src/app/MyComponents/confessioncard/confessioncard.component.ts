@@ -12,6 +12,7 @@ import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
 })
 export class ConfessioncardComponent {
   @Input() confession: any;
+  @Input() isDelete: Boolean = false;
   isLiked: Boolean = true;
   showComment: Boolean = false;
   comment: string = '';
@@ -78,4 +79,33 @@ export class ConfessioncardComponent {
   toggleComment() {
     this.showComment = !this.showComment;
   }
+
+  deleteconfession = async (id: string) => {
+    try {
+      this.confession = null;
+      
+
+      const response = await fetch(
+        `http://localhost:4000/api/deleteconfession/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+
+      // console.log('Confession deleted: ', data);
+    } catch (error) {
+      console.error('Error deleting confession: ', error);
+    }
+  };
 }
