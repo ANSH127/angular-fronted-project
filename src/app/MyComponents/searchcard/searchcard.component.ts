@@ -28,7 +28,7 @@ export class SearchcardComponent {
 
   fetchAllUsers = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/fetchallusers', {
+      const response = await fetch('https://angular-backend-y9ve.onrender.com/api/fetchallusers', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

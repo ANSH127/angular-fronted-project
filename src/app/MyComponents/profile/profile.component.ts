@@ -35,7 +35,7 @@ export class ProfileComponent {
 
   fetchUser = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/getuserdetails', {
+      const response = await fetch('https://angular-backend-y9ve.onrender.com/api/getuserdetails', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

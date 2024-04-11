@@ -25,7 +25,7 @@ export class ConfessioncardComponent {
     this.isLiked = !this.isLiked;
     try {
       const response = await fetch(
-        `http://localhost:4000/api/updatelikes/${id}`,
+        `https://angular-backend-y9ve.onrender.com/api/updatelikes/${id}`,
         {
           method: 'PATCH',
           headers: {
@@ -51,7 +51,7 @@ export class ConfessioncardComponent {
   postComment = async (id: string) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/addcomment/${id}`,
+        `https://angular-backend-y9ve.onrender.com/api/addcomment/${id}`,
         {
           method: 'PATCH',
           headers: {
@@ -86,7 +86,7 @@ export class ConfessioncardComponent {
       
 
       const response = await fetch(
-        `http://localhost:4000/api/deleteconfession/${id}`,
+        `https://angular-backend-y9ve.onrender.com/api/deleteconfession/${id}`,
         {
           method: 'DELETE',
           headers: {

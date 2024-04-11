@@ -24,7 +24,7 @@ export class AddconfessionformComponent {
     const data = { name: this.name, description: this.confession };
     try {
       this.isloding = true;
-      const response = await fetch('http://localhost:4000/api/addconfession', {
+      const response = await fetch('https://angular-backend-y9ve.onrender.com/api/addconfession', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
