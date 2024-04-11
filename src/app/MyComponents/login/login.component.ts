@@ -54,6 +54,7 @@ export class LoginComponent {
       } else {
         // set the token in local storage
         localStorage.setItem('token', data2.token);
+        localStorage.setItem('uid', data2._id);
 
         alert('Login successful');
         this.router.navigate(['/']);

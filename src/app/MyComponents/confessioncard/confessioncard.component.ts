@@ -6,25 +6,47 @@ import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
 @Component({
   selector: 'app-confessioncard',
   standalone: true,
-  imports: [NgHeroiconsModule,CommonModule,FormsModule],
+  imports: [NgHeroiconsModule, CommonModule, FormsModule],
   templateUrl: './confessioncard.component.html',
   styleUrl: './confessioncard.component.css',
 })
-
-
-
 export class ConfessioncardComponent {
   @Input() confession: any;
-  isLiked: Boolean = false;
+  isLiked: Boolean = true;
   showComment: Boolean = false;
   comment: string = '';
+  uid: string = localStorage.getItem('uid') || '';  
   constructor() {}
 
-  toggleLike() {
-    console.log('Like button clicked');
+  updateLike = async (id:string) => {
+    // console.log(id);
+    
     
     this.isLiked = !this.isLiked;
-  }
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/updatelikes/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({ confessionId: this.confession._id }),
+        }
+      );
+
+      const data = await response.json();
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+      // console.log('Like updated: ', data);
+    } catch (error) {
+      console.error('Error updating like: ', error);
+    }
+  };
 
   postComment() {
     console.log('Comment posted: ', this.comment);
