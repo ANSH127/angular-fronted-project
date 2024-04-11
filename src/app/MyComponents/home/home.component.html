@@ -9,10 +9,10 @@
         scrollbar-width: none; 
         ">
             <div class="shadow p-2 mt-5 mb-4">
-
-                <div *ngFor=
-                "let confession of confessions"
-                >
+                <div *ngIf="isloding" class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <div *ngFor="let confession of confessions">
                     <app-confessioncard [confession]="confession"></app-confessioncard>
                 </div>
 

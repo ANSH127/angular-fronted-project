@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class AddconfessionformComponent {
   name: string = 'Anonymous';
   confession: string = '';
+  isloding: boolean = false;
 
   constructor() {}
 
@@ -22,6 +23,7 @@ export class AddconfessionformComponent {
     }
     const data = { name: this.name, description: this.confession };
     try {
+      this.isloding = true;
       const response = await fetch('http://localhost:4000/api/addconfession', {
         method: 'POST',
         headers: {
@@ -39,6 +41,9 @@ export class AddconfessionformComponent {
       }
     } catch (error) {
       console.error('Error:', error);
+    }
+    finally {
+      this.isloding = false;
     }
   };
 }

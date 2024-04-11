@@ -46,7 +46,11 @@
                                 <p >
                                     Already have an account? <a style="cursor: pointer;" routerLink="/login">Login</a>
                                 </p>
-                                <button (click)="handleSignup()" type="submit" class="btn btn-primary">Submit</button>
+                                
+                                <div *ngIf="isloding" class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <button *ngIf="!isloding" (click)="handleSignup()" type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

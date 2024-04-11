@@ -21,6 +21,7 @@ import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
 })
 export class HomeComponent {
   confessions: any = [];
+  isloding: boolean = false;
 
   constructor() {}
 
@@ -31,6 +32,7 @@ export class HomeComponent {
 
   getConfessions = async () => {
     try {
+      this.isloding = true;
       const response = await fetch('http://localhost:4000/api/confessions', {
         method: 'GET',
         headers: {
@@ -44,6 +46,9 @@ export class HomeComponent {
       // console.log(data);
     } catch (error) {
       console.log(error);
+    }
+    finally {
+      this.isloding = false;
     }
   };
 }

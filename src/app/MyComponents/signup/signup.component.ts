@@ -27,6 +27,7 @@ export class SignupComponent {
   name: string = '';
   email: string = '';
   password: string = '';
+  isloding: boolean = false;
   constructor() {}
 
   handleSignup = async () => {
@@ -36,6 +37,7 @@ export class SignupComponent {
     }
 
     try {
+      this.isloding = true;
       const response = await fetch('http://localhost:4000/api/signup', {
         method: 'POST',
         headers: {
@@ -61,6 +63,7 @@ export class SignupComponent {
       this.name = '';
       this.email = '';
       this.password = '';
+      this.isloding = false;
     }
   };
 }

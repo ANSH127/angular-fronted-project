@@ -25,6 +25,7 @@ import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
 export class LoginComponent {
   email: string = '';
   password: string = '';
+  isloding: boolean = false;
   constructor() {}
 
   handleLogin = async () => {
@@ -33,6 +34,7 @@ export class LoginComponent {
       return;
     }
     try {
+      this.isloding = true;
       const data = { email: this.email, password: this.password };
       const response = await fetch('http://localhost:4000/api/login', {
         method: 'POST',
@@ -54,6 +56,9 @@ export class LoginComponent {
       }
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      this.isloding = false;
     }
   };
 }
