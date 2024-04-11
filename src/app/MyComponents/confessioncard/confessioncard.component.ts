@@ -15,13 +15,12 @@ export class ConfessioncardComponent {
   isLiked: Boolean = true;
   showComment: Boolean = false;
   comment: string = '';
-  uid: string = localStorage.getItem('uid') || '';  
+  uid: string = localStorage.getItem('uid') || '';
   constructor() {}
 
-  updateLike = async (id:string) => {
+  updateLike = async (id: string) => {
     // console.log(id);
-    
-    
+
     this.isLiked = !this.isLiked;
     try {
       const response = await fetch(
@@ -48,13 +47,35 @@ export class ConfessioncardComponent {
     }
   };
 
-  postComment() {
-    console.log('Comment posted: ', this.comment);
-    this.comment = '';
-  }
+  postComment = async (id: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/addcomment/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+          body: JSON.stringify({ comment: this.comment }),
+        }
+      );
+
+      const data = await response.json();
+      if (data.error) {
+        alert(data.error);
+        return;
+      }
+
+      this.confession.comments = data.comments;
+    } catch (error) {
+      console.error('Error posting comment: ', error);
+    } finally {
+      this.comment = '';
+    }
+  };
 
   toggleComment() {
-    console.log('Comment button clicked');
     this.showComment = !this.showComment;
   }
 }

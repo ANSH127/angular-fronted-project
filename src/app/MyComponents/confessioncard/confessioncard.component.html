@@ -10,7 +10,7 @@
             <p class="pt-1" style="display: flex; font-weight: 300; height: 15px;">
                 <!-- // format confession date in  1 hour ago format -->
                 {{ confession.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}
-               
+
 
             </p>
         </div>
@@ -24,8 +24,7 @@
     <div class="d-flex flex-row gap-2">
         <div class="d-flex flex-row gap-2">
 
-            <div 
-            *ngIf="isLiked  && confession.likedby.includes(uid); else elseBlock">
+            <div *ngIf="isLiked  && confession.likedby.includes(uid); else elseBlock">
 
 
                 <span (click)="updateLike(confession._id)">
@@ -41,7 +40,7 @@
             </ng-template>
 
 
-            <p class="pt-1">{{confession.likes }}   Likes</p>
+            <p class="pt-1">{{confession.likes }} Likes</p>
 
         </div>
         <div class="d-flex flex-row gap-2">
@@ -61,7 +60,7 @@
                     placeholder="Write a comment..." [(ngModel)]="comment">
                 </textarea>
             </div>
-            <div class="pt-2" (click)="postComment()">
+            <div class="pt-2" (click)="postComment(confession._id)">
 
                 <paper-airplane-solid-icon></paper-airplane-solid-icon>
             </div>
@@ -69,22 +68,28 @@
     </div>
 
     <!-- // comment section -->
-    <div *ngIf="showComment" class="container mt-4"  style="border-radius: 10px; background-color:rgb(243, 244, 246) ;">
-        <div class="container  pt-2">
-            <div class="d-flex flex-row gap-2">
-                <img src="/assets/images/Avatar.jpg" width="30" height="30" class="rounded-circle" alt="...">
-                <div>
-                    <p class="pt-1" style="font-weight: bold; height: 3px; font-size: small;">Ansh Agarwal</p>
-                    <p class="pt-1" style="display: flex; font-weight: 300; height: 10px; font-size: x-small;">2 hours ago</p>
+    <div *ngIf="showComment" class="container mt-4" >
+
+        <div *ngFor="let comment of confession.comments" style="border-radius: 10px; background-color:rgb(243, 244, 246) ;">
+            <div class="container  pt-2 mb-2">
+                <div class="d-flex flex-row gap-2">
+                    <img src="/assets/images/Avatar.jpg" width="30" height="30" class="rounded-circle" alt="...">
+                    <div>
+                        <p class="pt-1" style="font-weight: bold; height: 3px; font-size: small;">
+                            Anonymus
+                        </p>
+                        <p class="pt-1" style="display: flex; font-weight: 300; height: 10px; font-size: x-small;">{{
+                            comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}</p>
+                    </div>
+                </div>
+                <div class="pb-1">
+                    <p style="text-align: justify; font-size: small;">
+                        {{ comment.comment }}
+                    </p>
                 </div>
             </div>
-            <div class="pb-1">
-                <p style="text-align: justify; font-size: small;">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum dignissimos earum voluptates dolorum
-                    animi provident inventore est ab explicabo totam!
-                </p>
-            </div>
-        </div>
-    </div>
 
-</div>
+
+        </div>
+
+    </div>
