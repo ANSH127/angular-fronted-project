@@ -17,7 +17,10 @@ export class SearchcardComponent {
   constructor() {}
 
   search() {
-    console.log('searching for: ', this.searchinput);
+    if(this.searchinput === '') {
+      this.searchlist = [];
+      return;
+    }
     this.searchlist = this.userlist.filter((user:any) => {
       return user?.username?.toLowerCase().includes(this.searchinput.toLowerCase());
     });
@@ -34,7 +37,7 @@ export class SearchcardComponent {
       });
 
       const data = await response.json();
-      console.log('Users data: ', data);
+      // console.log('Users data: ', data);
 
       if (data.error) {
         alert(data.error);
