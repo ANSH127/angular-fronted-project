@@ -34,10 +34,8 @@
               "./node_modules/jquery/dist/jquery.js"
             ],
             "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "prerender": false,
+            "ssr": false
           },
           "configurations": {
             "production": {
