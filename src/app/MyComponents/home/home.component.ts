@@ -5,6 +5,8 @@ import { ConfessioncardComponent } from '../confessioncard/confessioncard.compon
 import { CommonModule } from '@angular/common';
 import { SearchcardComponent } from '../searchcard/searchcard.component';
 import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
+import {Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -23,7 +25,7 @@ export class HomeComponent {
   confessions: any = [];
   isloding: boolean = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
     // fetch the confessions
@@ -42,12 +44,17 @@ export class HomeComponent {
       });
 
       const data = await response.json();
+
+      if (data.error) {
+        alert(data.error);
+        this.router.navigate(['/login']);
+        return;
+      }
+
       this.confessions = data;
-      // console.log(data);
     } catch (error) {
       console.log(error);
-    }
-    finally {
+    } finally {
       this.isloding = false;
     }
   };
