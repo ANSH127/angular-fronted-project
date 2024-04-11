@@ -41,7 +41,7 @@ export class HomeComponent {
 
       const data = await response.json();
       this.confessions = data;
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }

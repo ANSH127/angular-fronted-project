@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
 
@@ -10,7 +10,11 @@ import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
   templateUrl: './confessioncard.component.html',
   styleUrl: './confessioncard.component.css',
 })
+
+
+
 export class ConfessioncardComponent {
+  @Input() confession: any;
   isLiked: Boolean = false;
   showComment: Boolean = false;
   comment: string = '';
