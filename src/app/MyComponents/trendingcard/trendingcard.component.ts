@@ -24,7 +24,7 @@ export class TrendingcardComponent {
       );
 
       const data = await response.json();
-      console.log('Trending data: ', data);
+      // console.log('Trending data: ', data);
 
       if (data.error) {
         alert(data.error);

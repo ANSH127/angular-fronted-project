@@ -1,25 +1,42 @@
-<div class="shadow p-2 mt-5 mb-5 profilecard" style="border-radius: 10px;" >
+<div class="shadow p-2 mt-5 mb-5 profilecard" style="border-radius: 10px;">
     <div class="space-y-3" style="height:150px;">
         <div class="text-center">
 
             <!-- // search bar -->
             <div class="input-group mb-3 d-flex gap-2">
-                <input type="text" class="form-control" placeholder="Search" aria-label="Search"
-                 [(ngModel)]="searchinput" >
-                
+
                 <span class="mt-1" (click)="search()">
 
                     <magnifying-glass-outline-icon></magnifying-glass-outline-icon>
                 </span>
+                <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                    [(ngModel)]="searchinput" (input)="search()">
 
             </div>
-            <div class="" style="text-align: center;">
+            <div *ngIf="searchlist.length==0; else elseblock" class="" style="text-align: center;">
 
                 <p>
                     No results found
                 </p>
 
             </div>
+
+            <ng-template #elseblock>
+                <div class="" style="overflow-y: scroll; overflow-x: hidden; height: 100px;scroll-behavior: smooth;
+        scrollbar-width: none;">
+                    <div *ngFor="let item of searchlist" class="card m-2">
+
+                        <div class="d-flex flex-row gap-2 p-1"
+                            style="background-color: rgb(243, 244, 246); height:45px;">
+
+                            <img src="/assets/images/Avatar.jpg" class="card-img-top" alt="..."
+                                style="border-radius: 100%; width: 35px; height: 35px;">
+                            <p class="mt-1">{{item.username}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </ng-template>
 
         </div>
     </div>
