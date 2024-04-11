@@ -3,20 +3,40 @@
         <div class="text-center">
             <div class="">
 
-                <img *ngIf="isLoggedin" routerLink="/profile"  style="border-radius: 100%;" src="assets/images/Avatar.jpg" alt="" width="100" height="100">
 
-                <img *ngIf="!isLoggedin" style="border-radius: 100%;" src="assets/images/sad-face.png" alt="" width="100" height="100">
+                <img *ngIf="user?.username?.length > 0; else elseblock2" style="border-radius: 100%;"
+                    src="assets/images/Avatar.jpg" alt="" width="100" height="100">
+                <ng-template #elseblock2>
+                    <img style="border-radius: 100%;" src="assets/images/sad-face.png" alt="" width="100" height="100">
+                </ng-template>
 
             </div>
             <div class="text-center">
-                <h6 style="font-weight: bold; font-size: 1.5rem;">Ansh Agarwal</h6>
+
+                <h6 *ngIf="user?.username?.length > 0; else elseblock" style="font-weight: bold; font-size: 1.5rem;">
+                    {{user.username}}
+                </h6>
+                <ng-template #elseblock>
+                    <h6 style="font-weight: bold; font-size: 1.5rem;">
+                        You Haven't Logged In
+
+                    </h6>
+                </ng-template>
 
             </div>
 
             <div>
-                <a class="btn btn-primary" style="cursor: pointer;" routerLink="/login">
-                    Login
-                </a>
+
+
+                <button *ngIf="user?.username?.length > 0; else elseblock3" (click)="handleLogout()"
+                    class="btn btn-primary">
+                    Logout
+                </button>
+                <ng-template #elseblock3>
+                    <button routerLink="/login" class="btn btn-primary">
+                        Login
+                    </button>
+                </ng-template>
             </div>
         </div>
     </div>

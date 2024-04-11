@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SearchcardComponent } from '../searchcard/searchcard.component';
 import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -28,7 +29,8 @@ export class SignupComponent {
   email: string = '';
   password: string = '';
   isloding: boolean = false;
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   handleSignup = async () => {
     if (this.name === '' || this.email === '' || this.password === '') {
@@ -56,6 +58,7 @@ export class SignupComponent {
         alert(data.message);
       } else {
         alert('Signup successful');
+        this.router.navigate(['/login']);
       }
     } catch (error) {
       console.log(error);

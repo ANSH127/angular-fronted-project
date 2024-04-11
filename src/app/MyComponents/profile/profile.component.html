@@ -15,12 +15,27 @@
 
                     <div class="text-center gap-y-3">
 
-                        <img style="border-radius: 100%;" src="assets/images/Avatar.jpg" alt="" width="120"
+                        <img *ngIf="user?.username?.length > 0; else elseblock2" style="border-radius: 100%;" src="assets/images/Avatar.jpg" alt="" width="120"
                             height="120">
+                        <ng-template #elseblock2>
+                            <img style="border-radius: 100%;" src="assets/images/sad-face.png" alt="" width="120" height="120">
+                        </ng-template>
 
                     </div>
                     <div class="text-center">
-                        <h6 style="font-weight: bold; font-size: 2rem;">Ansh Agarwal</h6>
+                        <h6 *ngIf="user?.username?.length > 0; else elseblock"
+                            style="font-weight: bold; font-size: 2rem;">
+                            {{user.username}}
+                        </h6>
+                        <ng-template #elseblock>
+                            <h6 style="font-weight: bold; font-size: 2rem;">
+                                You Haven't Logged In
+
+                            </h6>
+                        </ng-template>
+
+
+
 
                     </div>
 
@@ -28,16 +43,21 @@
                     <div class="mt-5 gap-y-3 form-group d-flex gap-2">
                         <label for="name" class="p-2" style="font-weight: bold;">Email</label>
                         <input type="text" name="email" class="form-control w-80" id="name" aria-describedby="emailHelp"
-                            placeholder="anshagrawal12348@gmail.com" disabled required>
+                            [defaultValue]=user.email disabled required>
 
 
                     </div>
 
                     <div class="text-center gap-y-3 mt-4">
-                        
-                        <button class="btn btn-primary">
+
+                        <button *ngIf="user?.username?.length > 0; else elseblock3" (click)="handleLogout()" class="btn btn-primary">
                             Logout
                         </button>
+                        <ng-template #elseblock3>
+                            <button routerLink="/login"  class="btn btn-primary">
+                                Login
+                            </button>
+                        </ng-template>
 
                     </div>
 
@@ -47,8 +67,8 @@
             </div>
         </div>
         <div class=" col-md-3 d-none d-md-block">
-                        <app-searchcard></app-searchcard>
-                        <app-trendingcard></app-trendingcard>
-                    </div>
-                </div>
-            </div>
+            <app-searchcard></app-searchcard>
+            <app-trendingcard></app-trendingcard>
+        </div>
+    </div>
+</div>

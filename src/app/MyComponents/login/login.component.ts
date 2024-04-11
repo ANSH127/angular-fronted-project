@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SearchcardComponent } from '../searchcard/searchcard.component';
 import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
+import {Router } from '@angular/router';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -26,7 +28,8 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   isloding: boolean = false;
-  constructor() {}
+
+  constructor(private router: Router) {}
 
   handleLogin = async () => {
     if (this.email == '' || this.password == '') {
@@ -53,6 +56,7 @@ export class LoginComponent {
         localStorage.setItem('token', data2.token);
 
         alert('Login successful');
+        this.router.navigate(['/']);
       }
     } catch (error) {
       console.log(error);

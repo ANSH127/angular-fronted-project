@@ -7,13 +7,57 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { SearchcardComponent } from '../searchcard/searchcard.component';
 import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
+import {Router } from '@angular/router';
+
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterLink,CommonModule,FormsModule,NavcardComponent,ProfilecardComponent,SearchcardComponent,TrendingcardComponent],
+  imports: [
+    RouterLink,
+    CommonModule,
+    FormsModule,
+    NavcardComponent,
+    ProfilecardComponent,
+    SearchcardComponent,
+    TrendingcardComponent,
+    
+
+  ],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
 })
 export class ProfileComponent {
+  
 
+  constructor(private router: Router) {}
+
+  user: any = {};
+
+  fetchUser = async () => {
+    try {
+      const response = await fetch('http://localhost:4000/api/getuserdetails', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      const data = await response.json();
+      this.user = data;
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  handleLogout =  () => {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  };
+
+
+  ngOnInit() {
+    this.fetchUser();
+  }
 }
