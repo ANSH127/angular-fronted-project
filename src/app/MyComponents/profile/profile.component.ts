@@ -53,7 +53,7 @@ export class ProfileComponent {
 
   handleLogout =  () => {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    window.location.href = '/login';
   };
 
 

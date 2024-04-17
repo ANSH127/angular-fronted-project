@@ -35,4 +35,23 @@
     </div>
   </div>
 </nav>
-<router-outlet></router-outlet>
+
+<div class=" text-center container">
+  <div class="row">
+    <div class="col-md-3 d-none d-md-block">
+      <app-profilecard></app-profilecard>
+      <app-navcard></app-navcard>
+    </div>
+    <div class="col-md-6 col-12" style="overflow-y: scroll; overflow-x: hidden; height: 80vh;scroll-behavior: smooth;
+
+      scrollbar-width: none; 
+      ">
+      <router-outlet></router-outlet>
+
+    </div>
+    <div class="col-md-3 d-none d-md-block">
+      <app-searchcard></app-searchcard>
+      <app-trendingcard></app-trendingcard>
+    </div>
+  </div>
+</div>

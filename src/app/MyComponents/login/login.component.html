@@ -1,57 +1,39 @@
-<div class=" container">
-    <div class="row">
-        <div class="col-md-3 d-none d-md-block">
-            <app-profilecard></app-profilecard>
-            <app-navcard></app-navcard>
+<div class="shadow p-2 mt-5 mb-4">
+
+    <!-- ḷogin form -->
+    <div>
+
+        <div>
+            <img src="assets/images/login.png" class="img-fluid" alt="cover" style="width: 100%; height: auto;">
         </div>
-        <div class="col-md-6 col-12" style="overflow-y: scroll; overflow-x: hidden; height: 80vh;scroll-behavior: smooth;
 
-        scrollbar-width: none; 
-        ">
-            <div class="shadow p-2 mt-5 mb-4">
+        <div>
+            <form>
+                <div class="form-group">
+                    <label for="email" class="p-2" style="font-weight: bold;">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="Enter email" [(ngModel)]="email" required>
 
-                <!-- ḷogin form -->
-                <div>
-
-                    <div>
-                        <img src="assets/images/login.png" class="img-fluid" alt="cover"
-                            style="width: 100%; height: auto;">
-                    </div>
-
-                    <div>
-                        <form>
-                            <div class="form-group">
-                                <label for="email" class="p-2" style="font-weight: bold;">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
-                                    placeholder="Enter email" [(ngModel)]="email" required>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="pass" class="p-2" style="font-weight: bold;">Password</label>
-                                <input type="password" name="pass" class="form-control" id="pass" placeholder="Password"
-                                    [(ngModel)]="password" required>
-                                
-                            </div>
-                            <div class="text-center p-4">
-                                <p>Don't have an account? <a style="cursor: pointer;" routerLink="/signup">Sign up</a></p>
-
-                                <div *ngIf="isloding" class="spinner-border" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                </div>
-                                <button  *ngIf="!isloding" (click)="handleLogin()" type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
 
+                <div class="form-group">
+                    <label for="pass" class="p-2" style="font-weight: bold;">Password</label>
+                    <input type="password" name="pass" class="form-control" id="pass" placeholder="Password"
+                        [(ngModel)]="password" required>
 
-            </div>
-        </div>
-        <div class="col-md-3 d-none d-md-block">
-            <app-searchcard></app-searchcard>
-            <app-trendingcard></app-trendingcard>
-            
+                </div>
+                <div class="text-center p-4">
+                    <p>Don't have an account? <a style="cursor: pointer;" routerLink="/signup">Sign up</a></p>
+
+                    <div *ngIf="isloding" class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button *ngIf="!isloding" (click)="handleLogin()" type="submit"
+                        class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+
+
 </div>

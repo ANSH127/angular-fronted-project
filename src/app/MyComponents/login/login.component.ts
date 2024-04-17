@@ -57,7 +57,7 @@ export class LoginComponent {
         localStorage.setItem('uid', data2._id);
 
         alert('Login successful');
-        this.router.navigate(['/']);
+        window.location.href = '/';
       }
     } catch (error) {
       console.log(error);

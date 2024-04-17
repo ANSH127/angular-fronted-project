@@ -36,7 +36,7 @@ export class ProfilecardComponent {
 
   handleLogout =  () => {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    window.location.href = '/login';
   };
 
   ngOnInit() {
