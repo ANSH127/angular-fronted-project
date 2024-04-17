@@ -1,4 +1,4 @@
-<div  *ngIf="confession"  class=" w-100  shadow-sm p-1 mt-4 mb-4">
+<div *ngIf="confession" class=" w-100  shadow-sm p-1 mt-4 mb-4">
     <div class="d-flex flex-row gap-2">
 
         <img src="/assets/images/Avatar.jpg" width="40" height="40" class="rounded-circle" alt="...">
@@ -27,21 +27,25 @@
 
     <div class="d-flex flex-row gap-2">
         <div class="d-flex flex-row gap-2">
-
-            <div *ngIf="isLiked  && confession.likedby.includes(uid); else elseBlock">
-
-
-                <span (click)="updateLike(confession._id)">
-
-                    <heart-solid-icon></heart-solid-icon>
-                </span>
+            <div *ngIf="isloding">
+                <img src="/assets/images/loading2.gif" width="30" height="30" alt="...">
             </div>
-            <ng-template #elseBlock>
-                <span (click)="updateLike(confession._id)">
+            <div *ngIf="!isloding">
+                <div *ngIf="isLiked  && confession.likedby.includes(uid); else elseBlock">
 
-                    <heart-outline-icon></heart-outline-icon>
-                </span>
-            </ng-template>
+
+                    <span (click)="updateLike(confession._id)">
+
+                        <heart-solid-icon></heart-solid-icon>
+                    </span>
+                </div>
+                <ng-template #elseBlock>
+                    <span (click)="updateLike(confession._id)">
+
+                        <heart-outline-icon></heart-outline-icon>
+                    </span>
+                </ng-template>
+            </div>
 
 
             <p class="pt-1">{{confession.likes }} Likes</p>

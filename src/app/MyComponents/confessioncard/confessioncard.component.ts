@@ -13,17 +13,22 @@ import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
 export class ConfessioncardComponent {
   @Input() confession: any;
   @Input() isDelete: Boolean = false;
-  isLiked: Boolean = true;
   showComment: Boolean = false;
   comment: string = '';
   uid: string = localStorage.getItem('uid') || '';
+  isLiked: Boolean = false;
+  isloding: Boolean = false;
   constructor() {}
 
-  updateLike = async (id: string) => {
-    // console.log(id);
+  ngOnInit() {
+    this.isLiked = this.confession?.likedby?.includes(this.uid) || false;
+  }
 
-    this.isLiked = !this.isLiked;
+  updateLike = async (id: string) => {
+    
+
     try {
+      this.isloding = true;
       const response = await fetch(
         `https://angular-backend-y9ve.onrender.com/api/updatelikes/${id}`,
         {
@@ -45,6 +50,19 @@ export class ConfessioncardComponent {
       // console.log('Like updated: ', data);
     } catch (error) {
       console.error('Error updating like: ', error);
+    } finally {
+      if (this.isLiked) {
+        this.confession.likes = this.confession.likes - 1;
+        this.confession.likedby = this.confession.likedby.filter(
+          (id: string) => id !== this.uid
+        );
+      } else {
+        this.confession.likes = this.confession.likes + 1;
+        this.confession.likedby.push(this.uid);
+      }
+
+      this.isLiked = !this.isLiked;
+      this.isloding = false;
     }
   };
 
@@ -83,7 +101,6 @@ export class ConfessioncardComponent {
   deleteconfession = async (id: string) => {
     try {
       this.confession = null;
-      
 
       const response = await fetch(
         `https://angular-backend-y9ve.onrender.com/api/deleteconfession/${id}`,
@@ -101,7 +118,6 @@ export class ConfessioncardComponent {
         alert(data.error);
         return;
       }
-
 
       // console.log('Confession deleted: ', data);
     } catch (error) {
