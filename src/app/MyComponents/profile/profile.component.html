@@ -1,7 +1,10 @@
 <div class="shadow p-2 mt-5 mb-4" style="height: 80vh;">
 
+    <div *ngIf="isloading" class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
     <!-- Profile section -->
-    <div class="mt-4">
+    <div *ngIf="!isloading" class="mt-4">
 
         <div class="text-center gap-y-3">
 

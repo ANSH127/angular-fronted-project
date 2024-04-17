@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-
-import { NavcardComponent } from '../navcard/navcard.component';
-import { ProfilecardComponent } from '../profilecard/profilecard.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { SearchcardComponent } from '../searchcard/searchcard.component';
-import { TrendingcardComponent } from '../trendingcard/trendingcard.component';
 import {Router } from '@angular/router';
 
 @Component({
@@ -16,10 +11,6 @@ import {Router } from '@angular/router';
     RouterLink,
     CommonModule,
     FormsModule,
-    NavcardComponent,
-    ProfilecardComponent,
-    SearchcardComponent,
-    TrendingcardComponent,
     
 
   ],
@@ -32,6 +23,7 @@ export class ProfileComponent {
   constructor(private router: Router) {}
 
   user: any = {};
+  isloading: boolean = true;
 
   fetchUser = async () => {
     try {
@@ -45,9 +37,13 @@ export class ProfileComponent {
 
       const data = await response.json();
       this.user = data;
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.log(error);
+    }
+    finally{
+      this.isloading = false;
+    
     }
   };
 
