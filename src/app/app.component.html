@@ -37,7 +37,14 @@
 </nav>
 
 <div class=" text-center container">
-  <div class="row">
+
+  <div *ngIf="isloading" class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div  class="row"
+  [style]="isloading ? 'display:none' : 'display:flex'"
+  >
     <div class="col-md-3 d-none d-md-block">
       <app-profilecard></app-profilecard>
       <app-navcard></app-navcard>
