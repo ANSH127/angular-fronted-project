@@ -101,7 +101,7 @@ export class ConfessioncardComponent {
   reportConfession = async (id: string) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/api/reportconfession/${id}`,
+        `https://angular-backend-y9ve.onrender.com/api/reportconfession/${id}`,
         {
           method: 'PATCH',
           headers: {
