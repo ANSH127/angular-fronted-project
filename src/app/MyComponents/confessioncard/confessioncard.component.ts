@@ -18,10 +18,14 @@ export class ConfessioncardComponent {
   uid: string = localStorage.getItem('uid') || '';
   isLiked: Boolean = false;
   isloding: Boolean = false;
+  isReport: Boolean = true;
   constructor() {}
 
   ngOnInit() {
+    
     this.isLiked = this.confession?.likedby?.includes(this.uid) || false;
+    this.isReport = !(this.confession?.uid === this.uid);
+
   }
 
   updateLike = async (id: string) => {
@@ -93,6 +97,34 @@ export class ConfessioncardComponent {
       this.comment = '';
     }
   };
+
+  reportConfession = async (id: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/api/reportconfession/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+      if (data.message) {
+        alert(data.message);
+        return;
+      }
+
+      
+      alert('Confession reported successfully');
+    } catch (error) {
+      console.error('Error reporting confession: ', error);
+    }
+
+
+  }
 
   toggleComment() {
     this.showComment = !this.showComment;

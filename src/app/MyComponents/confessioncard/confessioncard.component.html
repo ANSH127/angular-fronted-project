@@ -15,6 +15,16 @@
             </p>
         </div>
 
+        <!-- // report icon  -->
+        <div *ngIf="confession.reportedby.includes(uid) else elseBlock2">
+            <flag-solid-icon color="red"></flag-solid-icon>
+        </div>
+        <ng-template #elseBlock2>
+            <div *ngIf="isReport" class="mt-1" (click)="reportConfession(confession._id)">
+                <flag-outline-icon color="red"></flag-outline-icon>
+            </div>
+        </ng-template>
+
         <div *ngIf="isDelete" class="mt-1" (click)="deleteconfession(confession._id)">
             <trash-outline-icon color="red"></trash-outline-icon>
         </div>
