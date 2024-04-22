@@ -1,3 +1,4 @@
+<div [ngClass]="{'dark-theme': isdark, 'light-theme': !isdark}">
 <nav class="navbar  bg-body-tertiary">
   <div class="container-fluid">
     <span class="navbar-brand mb-1">
@@ -6,6 +7,11 @@
         AnonEcho
       </h3>
     </span>
+    <button class="btn btn-outline-dark" (click)="toggleTheme()">
+      <sun-outline-icon *ngIf="!isdark"></sun-outline-icon>
+      <moon-outline-icon *ngIf="isdark"></moon-outline-icon>
+    </button>
+
     <button class="navbar-toggler d-sm-block d-md-none" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -61,4 +67,5 @@
       <app-trendingcard></app-trendingcard>
     </div>
   </div>
+</div>
 </div>
