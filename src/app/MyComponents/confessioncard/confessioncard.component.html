@@ -1,4 +1,4 @@
-<div *ngIf="confession" class=" w-100  shadow-sm p-1 mt-4 mb-4">
+<div *ngIf="confession" class=" w-100  shadow p-1 mt-4 mb-4">
     <div class="d-flex flex-row gap-2">
 
         <img src="/assets/images/Avatar.jpg" width="40" height="40" class="rounded-circle" alt="...">
@@ -9,7 +9,7 @@
             </p>
             <p class="pt-1" style="display: flex; font-weight: 300; height: 15px;">
                 <!-- // format confession date in  1 hour ago format -->
-                {{ confession.createdAt | date: 'yyyy-MM-dd HH:mm:ss' }}
+                {{ confession.createdAt | date: 'MMM d, y, h:mm:ss a' }}
 
 
             </p>
@@ -46,13 +46,13 @@
 
                     <span (click)="updateLike(confession._id)">
 
-                        <heart-solid-icon></heart-solid-icon>
+                        <heart-solid-icon color="red" ></heart-solid-icon>
                     </span>
                 </div>
                 <ng-template #elseBlock>
                     <span (click)="updateLike(confession._id)">
 
-                        <heart-outline-icon></heart-outline-icon>
+                        <heart-outline-icon color="red"></heart-outline-icon>
                     </span>
                 </ng-template>
             </div>
