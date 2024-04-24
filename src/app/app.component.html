@@ -1,71 +1,69 @@
 <div [ngClass]="{'dark-theme': isdark, 'light-theme': !isdark}">
-<nav class="navbar  bg-body-tertiary">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-1">
-      <h3 style="font-weight: bold;">
+  <nav class="navbar  bg-body-tertiary" [ngClass]="{'dark-theme': isdark, 'light-theme': !isdark}">
+    <div class="container-fluid" >
+      <span class="navbar-brand mb-1" [ngClass]="{'dark-theme': isdark, 'light-theme': !isdark}">
+        <h3 style="font-weight: bold;">
 
-        AnonVerse
-      </h3>
-    </span>
-    <button class="btn btn-outline-dark" (click)="toggleTheme()">
-      <sun-outline-icon *ngIf="!isdark"></sun-outline-icon>
-      <moon-outline-icon *ngIf="isdark"></moon-outline-icon>
-    </button>
+          AnonVerse
+        </h3>
+      </span>
+      <button class="btn btn-outline-dark" (click)="toggleTheme()">
+        <sun-outline-icon *ngIf="!isdark"></sun-outline-icon>
+        <moon-outline-icon *ngIf="isdark" [ngClass]="{'dark-theme': isdark, 'light-theme': !isdark}"></moon-outline-icon>
+      </button>
 
-    <button class="navbar-toggler d-sm-block d-md-none" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/myconfession">
-            My Confessions
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/addconfession">
-            Add Confession
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/profile">
-            Profile
-          </a>
-        </li>
+      <button class="navbar-toggler d-sm-block d-md-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/myconfession">
+              My Confessions
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/addconfession">
+              Add Confession
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">
+              Profile
+            </a>
+          </li>
 
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="px-4 text-center">
+  <div class="px-4 text-center">
 
-  <div *ngIf="isloading" class="spinner-border" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
-
-  <div  class="row"
-  [style]="isloading ? 'display:none' : 'display:flex'"
-  >
-    <div class="col-md-3 d-none d-md-block">
-      <app-profilecard></app-profilecard>
-      <app-navcard></app-navcard>
+    <div *ngIf="isloading" class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
-    <div class="col-md-6 col-12" style="overflow-y: scroll; overflow-x: hidden; height: 80vh;scroll-behavior: smooth;
+
+    <div class="row" [style]="isloading ? 'display:none' : 'display:flex'">
+      <div class="col-md-3 d-none d-md-block">
+        <app-profilecard></app-profilecard>
+        <app-navcard></app-navcard>
+      </div>
+      <div class="col-md-6 col-12" style="overflow-y: scroll; overflow-x: hidden; height: 80vh;scroll-behavior: smooth;
 
       scrollbar-width: none; 
       ">
-      <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
 
-    </div>
-    <div class="col-md-3 d-none d-md-block">
-      <app-searchcard></app-searchcard>
-      <app-trendingcard></app-trendingcard>
+      </div>
+      <div class="col-md-3 d-none d-md-block">
+        <app-searchcard></app-searchcard>
+        <app-trendingcard></app-trendingcard>
+      </div>
     </div>
   </div>
-</div>
 </div>
