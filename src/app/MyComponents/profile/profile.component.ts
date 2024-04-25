@@ -66,7 +66,7 @@ export class ProfileComponent {
 
   fetchConfessions = async () => {
     try {
-      const url = new URL(`http://localhost:4000/api/confessionbyid/${this.id}`);
+      const url = new URL(`https://angular-backend-y9ve.onrender.com/api/confessionbyid/${this.id}`);
       const response = await fetch(url, {
         method: 'GET',
         headers: {
