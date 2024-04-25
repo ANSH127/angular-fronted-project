@@ -1,4 +1,4 @@
-<div class="shadow p-2 mt-5 mb-4" style="height: 80vh;">
+<div class="shadow p-2 mt-5 mb-4" style="height: 90vh;">
 
     <div *ngIf="isloading" class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
@@ -9,7 +9,7 @@
         <div class="text-center gap-y-3">
 
             <img *ngIf="user?.username?.length > 0; else elseblock2" style="border-radius: 100%;"
-                src="assets/images/Avatar.jpg" alt="" width="120" height="120">
+                src="assets/images/Avatar.jpg" alt="" width="140" height="140">
             <ng-template #elseblock2>
                 <img style="border-radius: 100%;" src="assets/images/sad-face.png" alt="" width="120" height="120">
             </ng-template>
@@ -32,7 +32,7 @@
         </div>
 
 
-        
+
         <div *ngIf="!id" class="mt-5 gap-y-3 form-group d-flex gap-2">
             <label for="name" class="p-2" style="font-weight: bold;">Email</label>
             <input type="text" name="email" class="form-control w-80" id="name" aria-describedby="emailHelp"
@@ -52,6 +52,23 @@
                     Login
                 </button>
             </ng-template>
+
+        </div>
+
+        <div *ngIf="id" style="overflow-y: scroll; overflow-x: hidden; height: 50vh;
+            
+        scrollbar-width: thin; scrollbar-color: #137de7 #F4F4F4; scroll-behavior: smooth;">
+            <h4 class="text-start mx-2" style="text-decoration: underline;">Thoughts:</h4>
+
+
+            <div *ngIf="!isloading && confessions.length == 0" class="text-center mt-2">
+                <h5>No Confessions Found
+                </h5>
+            </div>
+
+            <div *ngFor="let confession of confessions">
+                <app-confessioncard [confession]="confession"></app-confessioncard>
+            </div>
 
         </div>
 

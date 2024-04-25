@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import {Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-
+import { ConfessioncardComponent } from '../confessioncard/confessioncard.component';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
     RouterLink,
     CommonModule,
     FormsModule,
+    ConfessioncardComponent
     
 
   ],
@@ -27,6 +28,7 @@ export class ProfileComponent {
   isloading: boolean = true;
   id: String ='';
   apiurl:String = 'https://angular-backend-y9ve.onrender.com/api/getuserdetails';
+  confessions:any=[];
 
   fetchUser = async () => {
 
@@ -62,13 +64,35 @@ export class ProfileComponent {
     window.location.href = '/login';
   };
 
+  fetchConfessions = async () => {
+    try {
+      const url = new URL(`http://localhost:4000/api/confessionbyid/${this.id}`);
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+
+      const data = await response.json();
+      data.reverse();
+      this.confessions = data;
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   ngOnInit() {
-    console.log('profile component');
     
     this.route.params.subscribe(params => {
       this.id = params['id'];
       this.fetchUser();
+      if (this.id) {
+        this.fetchConfessions();
+      }
       
     });
 

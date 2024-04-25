@@ -17,7 +17,7 @@ import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
 })
 export class AppComponent {
   title = 'frontend';
-  isloading: boolean = true;
+  isloading: boolean = false;
   isdark: boolean = false;
 
   toggleTheme = () => {
@@ -26,8 +26,8 @@ export class AppComponent {
   
   ngOnInit() {
 
-    setTimeout(() => {
-      this.isloading = false;
-    }, 2000);
+    // setTimeout(() => {
+    //   this.isloading = false;
+    // }, 1000);
   }
 }
