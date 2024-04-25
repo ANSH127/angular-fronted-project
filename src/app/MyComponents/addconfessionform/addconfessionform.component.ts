@@ -21,6 +21,14 @@ export class AddconfessionformComponent {
       alert('Please enter a confession');
       return;
     }
+
+    if(this.name=='Profile Name') {
+      // fetch the name from the backend
+      this.name=localStorage.getItem('name')?.toString() || 'Anonymous';
+      
+    }
+
+
     const data = { name: this.name, description: this.confession };
     try {
       this.isloding = true;

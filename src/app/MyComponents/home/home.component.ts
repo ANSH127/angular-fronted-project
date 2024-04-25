@@ -43,6 +43,9 @@ export class HomeComponent {
         return;
       }
 
+      // reverse the array to show the latest confession first
+      data.reverse();
+
       this.confessions = data;
     } catch (error) {
       console.log(error);

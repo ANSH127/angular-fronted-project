@@ -39,6 +39,9 @@ export class MyconfessionComponent {
         this.router.navigate(['/login']);
         return;
       }
+
+      // reverse the array to show the latest confession first
+      data.reverse();
       this.confessions = data;
       // console.log(data);
     } catch (error) {

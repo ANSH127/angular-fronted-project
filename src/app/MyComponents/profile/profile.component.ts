@@ -31,7 +31,7 @@ export class ProfileComponent {
   fetchUser = async () => {
 
     if(this.id) {
-      this.apiurl = `http://localhost:4000/api/getuserdetailsbyid/${this.id}`;
+      this.apiurl = `https://angular-backend-y9ve.onrender.com/api/getuserdetailsbyid/${this.id}`;
     }
 
 

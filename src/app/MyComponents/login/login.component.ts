@@ -47,6 +47,7 @@ export class LoginComponent {
         // set the token in local storage
         localStorage.setItem('token', data2.token);
         localStorage.setItem('uid', data2._id);
+        localStorage.setItem('name', data2.username);
 
         alert('Login successful');
         window.location.href = '/';
