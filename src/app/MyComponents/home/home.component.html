@@ -4,7 +4,7 @@
             <span class="visually-hidden">Loading...</span>
         </div>
         <div *ngFor="let confession of confessions">
-            <app-confessioncard [confession]="confession"></app-confessioncard>
+            <app-confessioncard *ngIf="confession.reportedby.length<=5"  [confession]="confession"></app-confessioncard>
         </div>
 
 
