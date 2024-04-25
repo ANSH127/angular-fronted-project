@@ -12,6 +12,7 @@ export const routes: Routes = [
     { path: 'myconfession', component: MyconfessionComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    { path: 'profile', component: ProfileComponent }
+    { path: 'profile', component: ProfileComponent },
+    {path:'profile/:id', component: ProfileComponent}
 
 ];

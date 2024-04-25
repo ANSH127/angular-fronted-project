@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { NgHeroiconsModule } from '@dimaslz/ng-heroicons';
 
 @Component({
   selector: 'app-searchcard',
   standalone: true,
-  imports: [NgHeroiconsModule, CommonModule, FormsModule],
+  imports: [NgHeroiconsModule, CommonModule, FormsModule,RouterLink],
   templateUrl: './searchcard.component.html',
   styleUrl: './searchcard.component.css',
 })

@@ -23,11 +23,11 @@
 
             <ng-template #elseblock>
                 <div class="" style="overflow-y: scroll; overflow-x: hidden; height: 100px;scroll-behavior: smooth;
-        scrollbar-width: none;">
+        scrollbar-width: thin; scrollbar-color: #137de7 #F4F4F4; scroll-behavior: smooth;">
                     <div *ngFor="let item of searchlist" class="card m-2">
 
-                        <div class="d-flex flex-row gap-2 p-1"
-                            style="background-color: rgb(243, 244, 246); height:45px;">
+                        <div class="d-flex flex-row gap-2 p-1" routerLink="/profile/{{item._id}}"
+                            style="background-color: rgb(243, 244, 246); height:45px; cursor: pointer;">
 
                             <img src="/assets/images/Avatar.jpg" class="card-img-top" alt="..."
                                 style="border-radius: 100%; width: 35px; height: 35px;">

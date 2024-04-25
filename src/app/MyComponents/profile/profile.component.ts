@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import {Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -20,14 +21,23 @@ import {Router } from '@angular/router';
 export class ProfileComponent {
   
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   user: any = {};
   isloading: boolean = true;
+  id: String ='';
+  apiurl:String = 'https://angular-backend-y9ve.onrender.com/api/getuserdetails';
 
   fetchUser = async () => {
+
+    if(this.id) {
+      this.apiurl = `http://localhost:4000/api/getuserdetailsbyid/${this.id}`;
+    }
+
+
     try {
-      const response = await fetch('https://angular-backend-y9ve.onrender.com/api/getuserdetails', {
+      const url = new URL(this.apiurl.toString());
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -54,6 +64,13 @@ export class ProfileComponent {
 
 
   ngOnInit() {
-    this.fetchUser();
+    console.log('profile component');
+    
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.fetchUser();
+      
+    });
+
   }
 }
